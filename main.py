@@ -53,6 +53,23 @@ def show_free():
 
 
 MENU.append(("Свободное время", show_free))
+# ===== US-3. Записать клиента =====
+def book_client():
+    show_free()
+    slot = input("Время записи (например, 10:00): ").strip()
+    if slot not in SLOTS:
+        print("Запись возможна с 9:00 до 17:00, каждый час")
+        return
+    if slot in bookings:
+        print("Это время уже занято")
+        return
+    name = input("Имя клиента: ").strip()
+    car = input("Марка автомобиля: ").strip()
+    bookings[slot] = {"имя": name, "авто": car}
+    print(f"Клиент {name} записан на {slot}")
+
+
+MENU.append(("Записать клиента", book_client))
 
 # ===== ЗАПУСК: эта строка всегда должна быть последней =====
 start()
