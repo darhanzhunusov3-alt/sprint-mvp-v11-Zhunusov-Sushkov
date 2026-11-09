@@ -93,6 +93,20 @@ def cancel_booking():
 
 
 MENU.append(("Отменить запись", cancel_booking))
+# ===== US-6. Поиск по имени =====
+def find_client():
+    name = input("Имя клиента: ").strip().lower()
+    found = False
+    for slot in SLOTS:
+        if slot in bookings and name in bookings[slot]["имя"].lower():
+            b = bookings[slot]
+            print(f"{slot} — {b['имя']}, {b['авто']}")
+            found = True
+    if not found:
+        print("Клиент не найден")
+
+
+MENU.append(("Найти запись по имени", find_client))
 
 # ===== ЗАПУСК: эта строка всегда должна быть последней =====
 start()
