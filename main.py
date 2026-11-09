@@ -82,6 +82,17 @@ def show_bookings():
 
 
 MENU.append(("Все записи на день", show_bookings))
+# ===== US-5. Отменить запись =====
+def cancel_booking():
+    slot = input("Время записи для отмены: ").strip()
+    if slot in bookings:
+        del bookings[slot]
+        print("Запись отменена, время свободно")
+    else:
+        print("На это время записи нет")
+
+
+MENU.append(("Отменить запись", cancel_booking))
 
 # ===== ЗАПУСК: эта строка всегда должна быть последней =====
 start()
