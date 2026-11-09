@@ -38,6 +38,21 @@ def start():
         else:
             print("Нет такого пункта меню")
 
+# ===== US-2. Свободное время =====
+SLOTS = ["9:00", "10:00", "11:00", "12:00", "13:00",
+         "14:00", "15:00", "16:00", "17:00"]
+bookings = {}  # время -> запись клиента
+
+
+def show_free():
+    free = [slot for slot in SLOTS if slot not in bookings]
+    if len(free) == 0:
+        print("Свободного времени нет")
+    else:
+        print("Свободно:", ", ".join(free))
+
+
+MENU.append(("Свободное время", show_free))
 
 # ===== ЗАПУСК: эта строка всегда должна быть последней =====
 start()
