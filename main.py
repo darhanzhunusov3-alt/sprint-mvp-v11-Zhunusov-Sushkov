@@ -70,6 +70,18 @@ def book_client():
 
 
 MENU.append(("Записать клиента", book_client))
+# ===== US-4. Все записи на день =====
+def show_bookings():
+    if len(bookings) == 0:
+        print("Записей пока нет")
+        return
+    for slot in SLOTS:
+        if slot in bookings:
+            b = bookings[slot]
+            print(f"{slot} — {b['имя']}, {b['авто']}")
+
+
+MENU.append(("Все записи на день", show_bookings))
 
 # ===== ЗАПУСК: эта строка всегда должна быть последней =====
 start()
